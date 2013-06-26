@@ -1,5 +1,7 @@
 {
     "name" : "shishire/proboscis",
+    "description" : "Blargh?",
+    "license" : "GPL-3.0+",
     "require" : {
         "php" :                ">=5.3.2",
         "ext-curl" :           "*",
