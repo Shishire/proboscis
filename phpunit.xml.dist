@@ -8,6 +8,7 @@
             <file>test/Shishire/ProboscisTest/ResponseObject/RepoTest.php</file>
             <file>test/Shishire/ProboscisTest/ResponseObject/PartialRepoTest.php</file>
             <file>test/Shishire/ProboscisTest/ResponseObject/PartialUserTest.php</file>
+            <file>test/Shishire/ProboscisTest/ResponseObject/UserReposTest.php</file>
         </testsuite>
     </testsuites>
 </phpunit>

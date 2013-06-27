@@ -10,12 +10,13 @@ class UserReposTest extends TestCase
     /**
      * @depends Shishire\ProboscisTest\ResponseObject\UserTest::testGetRepos
      */
-    public function testPreFetch(UserRepos $repos)
+    public function testPreFetch(UserRepos $refRepos)
     {
+        $repos = clone $refRepos;
         $repos->fetchAllPages();
         foreach($repos as $repo)
         {
-            $repoName = $repo->getName()
+            $repoName = $repo->getName();
             $this->assertThat($repoName, $this->isType('string'));
         }
     }
@@ -23,13 +24,14 @@ class UserReposTest extends TestCase
     /**
      * @depends Shishire\ProboscisTest\ResponseObject\UserTest::testGetRepos
      */
-    public function testLazyFetch(UserRepos $repos)
+    public function testLazyFetch(UserRepos $refRepos)
     {
+        $repos = clone $refRepos;
         do
         {
             foreach($repos as $repo)
             {
-                $repoName = $repo->getName()
+                $repoName = $repo->getName();
                 $this->assertThat($repoName, $this->isType('string'));
             }
         }
@@ -39,13 +41,14 @@ class UserReposTest extends TestCase
     /**
      * @depends Shishire\ProboscisTest\ResponseObject\UserTest::testGetRepos
      */
-    public function testLimitedFetch(UserRepos $repos)
+    public function testLimitedFetch(UserRepos $refRepos)
     {
+        $repos = clone $refRepos;
         for($i = 0; $i < 3; $i++)
         {
             foreach($repos as $repo)
             {   
-                $repoName = $repo->getName()
+                $repoName = $repo->getName();
                 $this->assertThat($repoName, $this->isType('string'));
             }   
 

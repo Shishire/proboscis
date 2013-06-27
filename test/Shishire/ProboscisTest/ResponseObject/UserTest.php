@@ -84,7 +84,7 @@ class UserTest extends TestCase
     /**
      * @depends Shishire\ProboscisTest\RestClientTest::testGetUser
      */
-    public function tesGetRepos(User $user)
+    public function testGetRepos(User $user)
     {
         $repos = $user->getRepos();
         $this->assertInstanceOf('\Shishire\Proboscis\ResponseObject\UserRepos', $repos);

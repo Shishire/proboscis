@@ -5,7 +5,7 @@ namespace Shishire\Proboscis\ResponseObject;
 use \Buzz\Message\Response;
 use \Shishire\Proboscis\Util\PaginationLinks;
 
-class UserRepos extends ResponseObject implements IteratorAggregate
+class UserRepos extends ResponseObject implements \IteratorAggregate
 {
     protected $paginated = true;
     protected $unpackAppend = false;
@@ -14,7 +14,7 @@ class UserRepos extends ResponseObject implements IteratorAggregate
     protected $paginateLink = false;
     protected $paginationLinks = false;
 
-    public function __construct($userId, $repoName)
+    public function __construct($userId)
     {
         $this->userId = $userId;
     }
@@ -33,7 +33,7 @@ class UserRepos extends ResponseObject implements IteratorAggregate
 
     protected function unpackResponse(Response $response)
     {
-        $responseArray = json_decode($repsonse->getContent(), true);
+        $responseArray = json_decode($response->getContent(), true);
         if($this->unpackAppend)
         {
             $this->repoList = array_merge($this->repoList, $responseArray);
@@ -50,7 +50,7 @@ class UserRepos extends ResponseObject implements IteratorAggregate
     public function getIterator()
     {
         $this->lazyLoad();
-        return new ArrayIterator($this->repoList);
+        return new \ArrayIterator($this->repoList);
     }
 
     public function fetchAllPages()
@@ -79,20 +79,24 @@ class UserRepos extends ResponseObject implements IteratorAggregate
             $this->request = null;
         }
     }
-
-    protected function hasNextLink()
+    public function hasNextPage()
     {
-        if(!$this->paginationLinks)
-        {
-            $this->paginationLinks = new PaginationLinks($this->response->getHeader('Link')));
-        }
-        return $this->paginationLinks->getNext() !== false;
+        return $this->getNextLink() !== false;
     }
+
     protected function getNextLink()
     {
         if(!$this->paginationLinks)
         {
-            $this->paginationLinks = new PaginationLinks($this->response->getHeader('Link')));
+            $headerLinks = $this->response->getHeader('Link');
+            if($headerLinks)
+            {
+                $this->paginationLinks = new PaginationLinks($headerLinks);
+            }
+            else
+            {
+                return false;
+            }
         }
         return $this->paginationLinks->getNext();
     }
