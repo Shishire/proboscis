@@ -9,6 +9,7 @@
             <file>test/Shishire/ProboscisTest/ResponseObject/PartialRepoTest.php</file>
             <file>test/Shishire/ProboscisTest/ResponseObject/PartialUserTest.php</file>
             <file>test/Shishire/ProboscisTest/ResponseObject/UserReposTest.php</file>
+            <file>test/Shishire/ProboscisTest/Util/PaginationLinksTest.php</file>
         </testsuite>
     </testsuites>
 </phpunit>

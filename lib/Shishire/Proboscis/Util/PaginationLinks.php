@@ -12,10 +12,13 @@ class PaginationLinks
         $links = array();
         foreach($unparsedLinks as $unparsedLink)
         {
-            list($linkDirty, $relDirty) = array_map('trim', explode(';', $unparsedLink));
-            $rel = preg_replace('/rel="(.*)"/', '\1', $relDirty);
-            $link = preg_replace('/<(.*)>/', '\1', $linkDirty);
-            $links[$rel] = $link;
+            $matches = array();
+            preg_match('/<(.*)>; rel="(.*)"/', $unparsedLink, $matches);
+
+            if(isset($matches[2]))
+            {
+                $links[$matches[2]] = $matches[1];
+            }
         }
         
         $this->links = $links;
