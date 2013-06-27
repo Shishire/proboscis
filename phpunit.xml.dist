@@ -3,8 +3,11 @@
     <testsuites>
         <testsuite name="Shishire/Proboscis">
             <file>Tests/Shishire/ProboscisTest/RestClientTest.php</file>
-            <file>Tests/Shishire/ProboscisTest/ResponseObject/UserTest.php</file>
             <file>Tests/Shishire/ProboscisTest/ResponseObject/ResponseObjectTest.php</file>
+            <file>Tests/Shishire/ProboscisTest/ResponseObject/UserTest.php</file>
+            <file>Tests/Shishire/ProboscisTest/ResponseObject/RepoTest.php</file>
+            <file>Tests/Shishire/ProboscisTest/ResponseObject/PartialRepoTest.php</file>
+            <file>Tests/Shishire/ProboscisTest/ResponseObject/PartialUserTest.php</file>
         </testsuite>
     </testsuites>
 </phpunit>
