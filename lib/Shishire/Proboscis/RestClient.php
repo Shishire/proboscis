@@ -2,12 +2,36 @@
 
 namespace Shishire\Proboscis;
 
-use \Shishire\Proboscis\ResponseObject\User;
+use \Buzz\Client\Curl as CurlClient;
+use \Buzz\Message\Request;
+use \Buzz\Message\Response;
 
-class RestClient
+static class RestClient
 {
-    public function getUser($username)
+    protected static $accessToken;
+    
+    public static function setAccessToken($token)
     {
-        return new User($username);
+        static::$accessToken = $token;
+    }
+    
+    public static function buzzClientFactory()
+    {
+        $client = new CurlClient();
+        $client->setOption(CURLOPT_USERAGENT, 'Shishire/Proboscis - PHP Wrapper for Github API');
+        return $client;
+    }
+    
+    public static function buzzRequestFactory()
+    {
+        $request = new Request();
+        $request->addHeader(sprintf('Authorization: token %s', static::$accessToken));
+        return $request;
+    }
+    
+    public static function buzzResponseFactory()
+    {
+        $response = new Response();
+        return $response;
     }
 }

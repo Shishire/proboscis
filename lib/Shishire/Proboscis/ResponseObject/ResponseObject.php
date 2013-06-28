@@ -19,13 +19,12 @@ abstract class ResponseObject
             // Do Request
             $requestUrl = new Url($this->getRequestUrl());
 
-            $request = new Request();
+            $request = RestClient::buzzRequestFactory();
             $request->fromUrl($requestUrl);
 
-            $response = new Response();
+            $response = RestClient::buzzResponseFactory();
 
-            $client = new Curl();
-            $client->setOption(CURLOPT_USERAGENT, 'Shishire/Proboscis - PHP Wrapper for Github API');
+            $client = RestClient::buzzClientFactory();
 
             $client->send($request, $response);
 

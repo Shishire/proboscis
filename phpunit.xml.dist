@@ -2,6 +2,7 @@
 <phpunit bootstrap="./vendor/autoload.php">
     <testsuites>
         <testsuite name="Shishire/Proboscis">
+            <file>test/Shishire/ProboscisTest/ApiClientTest.php</file>
             <file>test/Shishire/ProboscisTest/RestClientTest.php</file>
             <file>test/Shishire/ProboscisTest/ResponseObject/ResponseObjectTest.php</file>
             <file>test/Shishire/ProboscisTest/ResponseObject/UserTest.php</file>
