@@ -8,6 +8,9 @@ branches:
     only:
         - master
         - develop
+env:
+    global:
+        - secure: "oLU1F552c8LRCI00sSK0/fIf9R0go4OkT+OfpYLFryrOErxY/55NQ8XL9nGO\nQEfVshjdL4/KNVepp3O2AzirntHGTU4GvhF1wqJ6FQLei8RVfV6peXQbM5V5\nUIGnZff51TFZ7Ht4JPYFeyVkHAMeSNbPV1wDknUdUX+k36AwrMM="
 
 before_script:
     - composer install

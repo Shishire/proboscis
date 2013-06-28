@@ -8,7 +8,7 @@ use \Shishire\Proboscis\ResponseObject\User;
 class UserTest extends TestCase
 {
     /**
-     * @depends Shishire\ProboscisTest\RestClientTest::testGetUser
+     * @depends Shishire\ProboscisTest\ApiClientTest::testGetUser
      */
     public function testGetName(User $user)
     {
@@ -18,7 +18,7 @@ class UserTest extends TestCase
     }
 
     /**
-     * @depends Shishire\ProboscisTest\RestClientTest::testGetUser
+     * @depends Shishire\ProboscisTest\ApiClientTest::testGetUser
      */
     public function testGetLogin(User $user)
     {
@@ -28,7 +28,7 @@ class UserTest extends TestCase
     }
 
     /**
-     * @depends Shishire\ProboscisTest\RestClientTest::testGetUser
+     * @depends Shishire\ProboscisTest\ApiClientTest::testGetUser
      */
     public function testGetId(User $user)
     {
@@ -38,7 +38,7 @@ class UserTest extends TestCase
     }
 
     /**
-     * @depends Shishire\ProboscisTest\RestClientTest::testGetUser
+     * @depends Shishire\ProboscisTest\ApiClientTest::testGetUser
      */
     public function testGetType(User $user)
     {
@@ -48,7 +48,7 @@ class UserTest extends TestCase
     }
 
     /**
-     * @depends Shishire\ProboscisTest\RestClientTest::testGetUser
+     * @depends Shishire\ProboscisTest\ApiClientTest::testGetUser
      */
     public function testGetAvatarUrl(User $user)
     {
@@ -58,7 +58,7 @@ class UserTest extends TestCase
     }
 
     /**
-     * @depends Shishire\ProboscisTest\RestClientTest::testGetUser
+     * @depends Shishire\ProboscisTest\ApiClientTest::testGetUser
      */
     public function testGetAttribute(User $user)
     {
@@ -71,7 +71,7 @@ class UserTest extends TestCase
     }
 
     /**
-     * @depends Shishire\ProboscisTest\RestClientTest::testGetUser
+     * @depends Shishire\ProboscisTest\ApiClientTest::testGetUser
      */
     public function testGetRepo(User $user)
     {
@@ -82,7 +82,7 @@ class UserTest extends TestCase
     }
 
     /**
-     * @depends Shishire\ProboscisTest\RestClientTest::testGetUser
+     * @depends Shishire\ProboscisTest\ApiClientTest::testGetUser
      */
     public function testGetRepos(User $user)
     {

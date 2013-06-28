@@ -2,10 +2,9 @@
 
 namespace Shishire\Proboscis\ResponseObject;
 
-use \Buzz\Message\Request;
+use \Shishire\Proboscis\RestClient;
 use \Buzz\Message\Response;
 use \Buzz\Util\Url;
-use \Buzz\Client\Curl;
 
 abstract class ResponseObject
 {
@@ -17,25 +16,21 @@ abstract class ResponseObject
         if(is_null($this->response))
         {
             // Do Request
+            $client = RestClient::requestBuilder();
+
             $requestUrl = new Url($this->getRequestUrl());
 
-            $request = new Request();
-            $request->fromUrl($requestUrl);
+            $client->setUrl($requestUrl);
 
-            $response = new Response();
+            $client->executeRequest();
 
-            $client = new Curl();
-            $client->setOption(CURLOPT_USERAGENT, 'Shishire/Proboscis - PHP Wrapper for Github API');
-
-            $client->send($request, $response);
-
-            $this->request = $request;
-            $this->response = $response;
+            $this->request = $client->getRequest();
+            $this->response = $client->getResponse();
 
             $this->unpackResponse($this->response);
         }
     }
-    
+
     abstract protected function getRequestUrl();
     abstract protected function unpackResponse(Response $response);
 }

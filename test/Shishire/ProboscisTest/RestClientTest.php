@@ -3,8 +3,7 @@
 namespace Shishire\ProboscisTest;
 
 use \PHPUnit_Framework_TestCase as TestCase;
-use \Shishire\Proboscis\RestClient as RestClient;
-use \Shishire\Proboscis\ResponseObject\User;
+use \Shishire\Proboscis\RestClient;
 
 class RestClientTest extends TestCase
 {
@@ -14,17 +13,5 @@ class RestClientTest extends TestCase
         $this->assertInstanceOf('\Shishire\Proboscis\RestClient', $restClient);
 
         return $restClient;
-    }
-
-    /**
-     * @depends testRestClient
-     */
-    public function testGetUser(RestClient $restClient)
-    {
-        $userShishire = $restClient->getUser('Shishire');
-
-        $this->assertInstanceOf('\Shishire\Proboscis\ResponseObject\User', $userShishire);
-
-        return $userShishire;
     }
 }
