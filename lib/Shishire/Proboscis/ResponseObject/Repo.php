@@ -26,6 +26,10 @@ class Repo extends ResponseObject
         else
             return null;
     }
+    public function getCommitForRef($ref)
+    {
+        
+    }
 
     protected function getRequestUrl()
     {
